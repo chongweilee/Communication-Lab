@@ -1,7 +1,7 @@
 #include<iostream>
 #include<cmath>
 #include <random>
-#define simn 10000000
+#define simn 100000
 #define A 6.0
 #define ldb long double
 #define pi 3.14159265358979
@@ -21,8 +21,8 @@ int main(){
     genwv();
     default_random_engine rgen;
     normal_distribution<double> dist(0,N);
-    int n,crct=0;
-    ldb mod[simp],sum,nois;
+    int n;
+    ldb mod[simp],sum,nois,biterr=0;
     for(int k=0;k<simn;++k){
         sum = 0;
         n = rand()%2?1:-1;
@@ -31,8 +31,9 @@ int main(){
             mod[i] = n*(A+nois)*coswv[i];
         for(int i=0;i<simp;++i)
             sum += mod[i]*coswv[i];
-        crct+=sum*n<0;
+        biterr+=sum*n<0;
     }
-    cout<<crct<<" "<<simn<<endl;
+    cout<<"SNR: "<<A*A/2/N<<", BER: "<<biterr/simn;
+    cout<<" with "<<simn<<" simulations"<<endl;
     return 0;
 }
