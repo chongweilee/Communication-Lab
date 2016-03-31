@@ -1,9 +1,9 @@
 //#define A 10.0
-#define simn 100000
+#define simn 10000000
 #include<iostream>
 #include<cmath>
-#include <complex>
-#include <random>
+#include<complex>
+#include<random>
 #define cpx complex <long double>
 #define ldb long double
 #define pi 3.14159265358979
@@ -31,6 +31,7 @@ int main(){
     default_random_engine rgen;
     normal_distribution<double> dist(0,N);
     double A;
+    cout<<"A\tSymErr\tB0Err\tB1Err\tB2Err\tB3Err\tSimNum\n";
     for(int m =1;m<20;++m){
         A = 0.5*m;
         int n,scr,b0,b1,b2,b3,be,our,oui,out,osy;
